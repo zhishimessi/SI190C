@@ -1,0 +1,106 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-d44d2b405d5eae6b1537.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "joint_kinematics_node",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "dh_server::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dh_server-5c7a0462bb7b251b4dcd.json",
+					"name" : "dh_server",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "joint_kinematics_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-joint_kinematics_node-5d60e7cec72911075b05.json",
+					"name" : "joint_kinematics_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "joint_kinematics_node_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-joint_kinematics_node_uninstall-4f60a04c439ddfe8eb7b.json",
+					"name" : "joint_kinematics_node_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pose_publisher::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pose_publisher-4077354a4fbc893f9ed7.json",
+					"name" : "pose_publisher",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-518993960a7c55fbd414.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "utility::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-utility-3d123d9c6c3e24121d19.json",
+					"name" : "utility",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/donghy/SI190C/build/joint_kinematics_node",
+		"source" : "/home/donghy/SI190C/src/joint_kinematics_node"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

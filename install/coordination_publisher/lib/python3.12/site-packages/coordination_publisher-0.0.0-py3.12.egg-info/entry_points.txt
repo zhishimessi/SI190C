@@ -1,0 +1,2 @@
+[console_scripts]
+gui_node = coordination_publisher.gui_node:main

@@ -1,0 +1,37 @@
+[0.800s] Invoking command in '/home/donghy/SI190C/src/coordination_publisher': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/donghy/SI190C/build/coordination_publisher/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/donghy/SI190C/install/coordination_publisher/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/coordination_publisher build --build-base /home/donghy/SI190C/build/coordination_publisher/build install --record /home/donghy/SI190C/build/coordination_publisher/install.log --single-version-externally-managed install_data
+[1.016s] running egg_info
+[1.016s] creating ../../build/coordination_publisher/coordination_publisher.egg-info
+[1.093s] writing ../../build/coordination_publisher/coordination_publisher.egg-info/PKG-INFO
+[1.093s] writing dependency_links to ../../build/coordination_publisher/coordination_publisher.egg-info/dependency_links.txt
+[1.093s] writing entry points to ../../build/coordination_publisher/coordination_publisher.egg-info/entry_points.txt
+[1.093s] writing requirements to ../../build/coordination_publisher/coordination_publisher.egg-info/requires.txt
+[1.093s] writing top-level names to ../../build/coordination_publisher/coordination_publisher.egg-info/top_level.txt
+[1.093s] writing manifest file '../../build/coordination_publisher/coordination_publisher.egg-info/SOURCES.txt'
+[1.125s] reading manifest file '../../build/coordination_publisher/coordination_publisher.egg-info/SOURCES.txt'
+[1.126s] writing manifest file '../../build/coordination_publisher/coordination_publisher.egg-info/SOURCES.txt'
+[1.126s] running build
+[1.126s] running build_py
+[1.126s] creating /home/donghy/SI190C/build/coordination_publisher/build
+[1.126s] creating /home/donghy/SI190C/build/coordination_publisher/build/lib
+[1.126s] creating /home/donghy/SI190C/build/coordination_publisher/build/lib/coordination_publisher
+[1.126s] copying coordination_publisher/__init__.py -> /home/donghy/SI190C/build/coordination_publisher/build/lib/coordination_publisher
+[1.126s] copying coordination_publisher/gui_node.py -> /home/donghy/SI190C/build/coordination_publisher/build/lib/coordination_publisher
+[1.126s] running install
+[1.131s] running install_lib
+[1.147s] creating /home/donghy/SI190C/install/coordination_publisher/lib/python3.12/site-packages/coordination_publisher
+[1.147s] copying /home/donghy/SI190C/build/coordination_publisher/build/lib/coordination_publisher/__init__.py -> /home/donghy/SI190C/install/coordination_publisher/lib/python3.12/site-packages/coordination_publisher
+[1.147s] copying /home/donghy/SI190C/build/coordination_publisher/build/lib/coordination_publisher/gui_node.py -> /home/donghy/SI190C/install/coordination_publisher/lib/python3.12/site-packages/coordination_publisher
+[1.147s] byte-compiling /home/donghy/SI190C/install/coordination_publisher/lib/python3.12/site-packages/coordination_publisher/__init__.py to __init__.cpython-312.pyc
+[1.147s] byte-compiling /home/donghy/SI190C/install/coordination_publisher/lib/python3.12/site-packages/coordination_publisher/gui_node.py to gui_node.cpython-312.pyc
+[1.148s] running install_data
+[1.148s] creating /home/donghy/SI190C/install/coordination_publisher/share/ament_index
+[1.148s] creating /home/donghy/SI190C/install/coordination_publisher/share/ament_index/resource_index
+[1.148s] creating /home/donghy/SI190C/install/coordination_publisher/share/ament_index/resource_index/packages
+[1.148s] copying resource/coordination_publisher -> /home/donghy/SI190C/install/coordination_publisher/share/ament_index/resource_index/packages
+[1.149s] copying package.xml -> /home/donghy/SI190C/install/coordination_publisher/share/coordination_publisher
+[1.149s] running install_egg_info
+[1.166s] Copying ../../build/coordination_publisher/coordination_publisher.egg-info to /home/donghy/SI190C/install/coordination_publisher/lib/python3.12/site-packages/coordination_publisher-0.0.0-py3.12.egg-info
+[1.166s] running install_scripts
+[1.209s] Installing gui_node script to /home/donghy/SI190C/install/coordination_publisher/lib/coordination_publisher
+[1.209s] writing list of installed files to '/home/donghy/SI190C/build/coordination_publisher/install.log'
+[1.237s] Invoked command in '/home/donghy/SI190C/src/coordination_publisher' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/donghy/SI190C/build/coordination_publisher/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/donghy/SI190C/install/coordination_publisher/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/coordination_publisher build --build-base /home/donghy/SI190C/build/coordination_publisher/build install --record /home/donghy/SI190C/build/coordination_publisher/install.log --single-version-externally-managed install_data

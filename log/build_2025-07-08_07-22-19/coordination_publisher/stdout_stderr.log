@@ -1,0 +1,35 @@
+running egg_info
+creating ../../build/coordination_publisher/coordination_publisher.egg-info
+writing ../../build/coordination_publisher/coordination_publisher.egg-info/PKG-INFO
+writing dependency_links to ../../build/coordination_publisher/coordination_publisher.egg-info/dependency_links.txt
+writing entry points to ../../build/coordination_publisher/coordination_publisher.egg-info/entry_points.txt
+writing requirements to ../../build/coordination_publisher/coordination_publisher.egg-info/requires.txt
+writing top-level names to ../../build/coordination_publisher/coordination_publisher.egg-info/top_level.txt
+writing manifest file '../../build/coordination_publisher/coordination_publisher.egg-info/SOURCES.txt'
+reading manifest file '../../build/coordination_publisher/coordination_publisher.egg-info/SOURCES.txt'
+writing manifest file '../../build/coordination_publisher/coordination_publisher.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/donghy/SI190C/build/coordination_publisher/build
+creating /home/donghy/SI190C/build/coordination_publisher/build/lib
+creating /home/donghy/SI190C/build/coordination_publisher/build/lib/coordination_publisher
+copying coordination_publisher/__init__.py -> /home/donghy/SI190C/build/coordination_publisher/build/lib/coordination_publisher
+copying coordination_publisher/gui_node.py -> /home/donghy/SI190C/build/coordination_publisher/build/lib/coordination_publisher
+running install
+running install_lib
+creating /home/donghy/SI190C/install/coordination_publisher/lib/python3.12/site-packages/coordination_publisher
+copying /home/donghy/SI190C/build/coordination_publisher/build/lib/coordination_publisher/__init__.py -> /home/donghy/SI190C/install/coordination_publisher/lib/python3.12/site-packages/coordination_publisher
+copying /home/donghy/SI190C/build/coordination_publisher/build/lib/coordination_publisher/gui_node.py -> /home/donghy/SI190C/install/coordination_publisher/lib/python3.12/site-packages/coordination_publisher
+byte-compiling /home/donghy/SI190C/install/coordination_publisher/lib/python3.12/site-packages/coordination_publisher/__init__.py to __init__.cpython-312.pyc
+byte-compiling /home/donghy/SI190C/install/coordination_publisher/lib/python3.12/site-packages/coordination_publisher/gui_node.py to gui_node.cpython-312.pyc
+running install_data
+creating /home/donghy/SI190C/install/coordination_publisher/share/ament_index
+creating /home/donghy/SI190C/install/coordination_publisher/share/ament_index/resource_index
+creating /home/donghy/SI190C/install/coordination_publisher/share/ament_index/resource_index/packages
+copying resource/coordination_publisher -> /home/donghy/SI190C/install/coordination_publisher/share/ament_index/resource_index/packages
+copying package.xml -> /home/donghy/SI190C/install/coordination_publisher/share/coordination_publisher
+running install_egg_info
+Copying ../../build/coordination_publisher/coordination_publisher.egg-info to /home/donghy/SI190C/install/coordination_publisher/lib/python3.12/site-packages/coordination_publisher-0.0.0-py3.12.egg-info
+running install_scripts
+Installing gui_node script to /home/donghy/SI190C/install/coordination_publisher/lib/coordination_publisher
+writing list of installed files to '/home/donghy/SI190C/build/coordination_publisher/install.log'

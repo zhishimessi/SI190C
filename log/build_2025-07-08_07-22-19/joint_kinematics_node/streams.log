@@ -1,0 +1,83 @@
+[0.162s] Invoking command in '/home/donghy/SI190C/build/joint_kinematics_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/donghy/SI190C/src/joint_kinematics_node -DCMAKE_INSTALL_PREFIX=/home/donghy/SI190C/install/joint_kinematics_node
+[0.242s] -- The C compiler identification is GNU 13.3.0
+[0.300s] -- The CXX compiler identification is GNU 13.3.0
+[0.316s] -- Detecting C compiler ABI info
+[0.382s] -- Detecting C compiler ABI info - done
+[0.391s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.391s] -- Detecting C compile features
+[0.391s] -- Detecting C compile features - done
+[0.399s] -- Detecting CXX compiler ABI info
+[0.474s] -- Detecting CXX compiler ABI info - done
+[0.482s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.482s] -- Detecting CXX compile features
+[0.482s] -- Detecting CXX compile features - done
+[0.499s] -- Found ament_cmake: 2.5.3 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.637s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.735s] -- Found rclcpp: 28.1.6 (/opt/ros/jazzy/share/rclcpp/cmake)
+[0.789s] -- Found rosidl_generator_c: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.805s] -- Found rosidl_generator_cpp: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.826s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.844s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.922s] -- Found rmw_implementation_cmake: 7.3.1 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[0.926s] -- Found rmw_fastrtps_cpp: 8.4.1 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[1.010s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[1.028s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[1.047s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.114s] -- Found sensor_msgs: 5.3.5 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[1.173s] -- Found ament_lint_auto: 0.17.1 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[1.264s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.264s] -- Configured cppcheck include dirs: /home/donghy/SI190C/src/joint_kinematics_node/include
+[1.264s] -- Configured cppcheck exclude dirs and/or files: 
+[1.265s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.265s] -- Configured 'flake8' exclude dirs and/or files: 
+[1.266s] -- Added test 'lint_cmake' to check CMake code style
+[1.267s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.268s] -- Added test 'uncrustify' to check C / C++ code style
+[1.268s] -- Configured uncrustify additional arguments: 
+[1.268s] -- Added test 'xmllint' to check XML markup files
+[1.269s] -- Configuring done (1.1s)
+[1.281s] -- Generating done (0.0s)
+[1.285s] -- Build files have been written to: /home/donghy/SI190C/build/joint_kinematics_node
+[1.295s] Invoked command in '/home/donghy/SI190C/build/joint_kinematics_node' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/donghy/SI190C/src/joint_kinematics_node -DCMAKE_INSTALL_PREFIX=/home/donghy/SI190C/install/joint_kinematics_node
+[1.295s] Invoking command in '/home/donghy/SI190C/build/joint_kinematics_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/donghy/SI190C/build/joint_kinematics_node -- -j12 -l12
+[1.339s] [ 25%] [32mBuilding CXX object CMakeFiles/dh_server.dir/src/DH_server.cpp.o[0m
+[1.339s] [ 25%] [32mBuilding CXX object CMakeFiles/utility.dir/src/utility.cpp.o[0m
+[1.339s] [ 37%] [32mBuilding CXX object CMakeFiles/pose_publisher.dir/test/pose_publisher.cpp.o[0m
+[1.619s] [ 50%] [32m[1mLinking CXX static library libutility.a[0m
+[1.652s] [ 50%] Built target utility
+[2.050s] [ 62%] [32m[1mLinking CXX static library libdh_server.a[0m
+[2.080s] [ 62%] Built target dh_server
+[2.098s] [ 75%] [32mBuilding CXX object CMakeFiles/joint_kinematics_node.dir/src/joint_kinematics_node.cpp.o[0m
+[4.256s] [ 87%] [32m[1mLinking CXX executable pose_publisher[0m
+[4.399s] [ 87%] Built target pose_publisher
+[9.494s] [100%] [32m[1mLinking CXX executable joint_kinematics_node[0m
+[9.757s] [100%] Built target joint_kinematics_node
+[9.766s] Invoked command in '/home/donghy/SI190C/build/joint_kinematics_node' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/donghy/SI190C/build/joint_kinematics_node -- -j12 -l12
+[9.767s] Invoking command in '/home/donghy/SI190C/build/joint_kinematics_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/donghy/SI190C/build/joint_kinematics_node
+[9.774s] -- Install configuration: ""
+[9.775s] -- Installing: /home/donghy/SI190C/install/joint_kinematics_node/lib/joint_kinematics_node/joint_kinematics_node
+[9.778s] -- Set non-toolchain portion of runtime path of "/home/donghy/SI190C/install/joint_kinematics_node/lib/joint_kinematics_node/joint_kinematics_node" to ""
+[9.778s] -- Installing: /home/donghy/SI190C/install/joint_kinematics_node/lib/joint_kinematics_node/pose_publisher
+[9.778s] -- Set non-toolchain portion of runtime path of "/home/donghy/SI190C/install/joint_kinematics_node/lib/joint_kinematics_node/pose_publisher" to ""
+[9.778s] -- Installing: /home/donghy/SI190C/install/joint_kinematics_node/share/joint_kinematics_node/launch
+[9.779s] -- Installing: /home/donghy/SI190C/install/joint_kinematics_node/share/joint_kinematics_node/launch/__pycache__
+[9.779s] -- Installing: /home/donghy/SI190C/install/joint_kinematics_node/share/joint_kinematics_node/launch/__pycache__/kinematics_node.launch.cpython-312.pyc
+[9.779s] -- Installing: /home/donghy/SI190C/install/joint_kinematics_node/share/joint_kinematics_node/launch/kinematics_node.launch.py
+[9.779s] -- Installing: /home/donghy/SI190C/install/joint_kinematics_node/share/joint_kinematics_node/config
+[9.779s] -- Installing: /home/donghy/SI190C/install/joint_kinematics_node/share/joint_kinematics_node/config/dh_params.yaml
+[9.779s] -- Installing: /home/donghy/SI190C/install/joint_kinematics_node/share/ament_index/resource_index/package_run_dependencies/joint_kinematics_node
+[9.779s] -- Installing: /home/donghy/SI190C/install/joint_kinematics_node/share/ament_index/resource_index/parent_prefix_path/joint_kinematics_node
+[9.779s] -- Installing: /home/donghy/SI190C/install/joint_kinematics_node/share/joint_kinematics_node/environment/ament_prefix_path.sh
+[9.779s] -- Installing: /home/donghy/SI190C/install/joint_kinematics_node/share/joint_kinematics_node/environment/ament_prefix_path.dsv
+[9.779s] -- Installing: /home/donghy/SI190C/install/joint_kinematics_node/share/joint_kinematics_node/environment/path.sh
+[9.779s] -- Installing: /home/donghy/SI190C/install/joint_kinematics_node/share/joint_kinematics_node/environment/path.dsv
+[9.779s] -- Installing: /home/donghy/SI190C/install/joint_kinematics_node/share/joint_kinematics_node/local_setup.bash
+[9.779s] -- Installing: /home/donghy/SI190C/install/joint_kinematics_node/share/joint_kinematics_node/local_setup.sh
+[9.779s] -- Installing: /home/donghy/SI190C/install/joint_kinematics_node/share/joint_kinematics_node/local_setup.zsh
+[9.779s] -- Installing: /home/donghy/SI190C/install/joint_kinematics_node/share/joint_kinematics_node/local_setup.dsv
+[9.779s] -- Installing: /home/donghy/SI190C/install/joint_kinematics_node/share/joint_kinematics_node/package.dsv
+[9.779s] -- Installing: /home/donghy/SI190C/install/joint_kinematics_node/share/ament_index/resource_index/packages/joint_kinematics_node
+[9.779s] -- Installing: /home/donghy/SI190C/install/joint_kinematics_node/share/joint_kinematics_node/cmake/joint_kinematics_nodeConfig.cmake
+[9.779s] -- Installing: /home/donghy/SI190C/install/joint_kinematics_node/share/joint_kinematics_node/cmake/joint_kinematics_nodeConfig-version.cmake
+[9.779s] -- Installing: /home/donghy/SI190C/install/joint_kinematics_node/share/joint_kinematics_node/package.xml
+[9.780s] Invoked command in '/home/donghy/SI190C/build/joint_kinematics_node' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/donghy/SI190C/build/joint_kinematics_node

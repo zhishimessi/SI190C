@@ -1,0 +1,2 @@
+/usr/bin/ar qc libdh_server.a CMakeFiles/dh_server.dir/src/DH_server.cpp.o
+/usr/bin/ranlib libdh_server.a
