@@ -7,18 +7,23 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{xcolor}   
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Conference Paper Title*\\
+\title{Robot Kinematic Calibration Report\\
+
 {\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
 should not be used}
-\thanks{Identify applicable funding agency here. If none, delete this.}
+
 }
 
 \author{\IEEEauthorblockN{ Given Name Surname}
-\IEEEauthorblockA{\textit{School. name of organization (of Aff.)} \\
+\IEEEauthorblockA{\textit{Shanghaitech} \\
 email address and student ID}
 
 }
@@ -26,18 +31,56 @@ email address and student ID}
 \maketitle
 
 \begin{abstract}
-This document is a model and instructions for \LaTeX.
-This and the IEEEtran.cls file define the components of your paper [title, text, heads, etc.]. *CRITICAL: Do Not Use Symbols, Special Characters, Footnotes, 
-or Math in Paper Title or Abstract.
+This report aims to perform kinematic calibration on a six-degree-of-freedom (6-DOF) robotic arm through an experimental approach. The core task is to correct its theoretical Denavit-Hartenberg (DH) parameters to reduce the discrepancy between the theoretical model and the physical reality, thereby improving the end-effector's positioning accuracy. We adopted a calibration strategy based on cube-vertex measurements. By collecting the robot's joint angles at specific points, a numerical optimization algorithm is used to iteratively solve for the optimal corrections to the DH parameters. This report will detail the experimental principles, data acquisition process, implementation of the calibration algorithm, and an analysis of the final results. The results demonstrate that the calibration significantly reduced the robot's positioning error, validating the effectiveness of the method.
 \end{abstract}
 
 \begin{IEEEkeywords}
-component, formatting, style, styling, insert
+ DH parameters, calibration
 \end{IEEEkeywords}
 
 \section{Introduction}
-This document is a model and instructions for \LaTeX.
-Please observe the conference page limits. 
+Industrial robotic arms play a crucial role in automated production lines. The precision of their task execution depends directly on the accuracy of their kinematic model. However, due to manufacturing tolerances, assembly errors, and material deformation, a robot's actual geometric parameters often deviate from their theoretical design values (i.e., nominal parameters). This deviation causes a mismatch between the end-effector pose calculated from the theoretical model and its actual pose, severely impacting the robot's absolute positioning accuracy.
+
+Robot calibration is the key technology to solve this problem. It is essentially a parameter identification process that uses external measurements to acquire precise data about the robot's pose at various points in space. This data is then used as a benchmark to correct the geometric parameters in the kinematic model. The Denavit-Hartenberg (DH) model is the most classic and widely used method for describing the coordinate frame relationships between robot links. Therefore, calibrating the DH parameters is a central task for improving robot accuracy.
+
+The objectives of this report are:
+\begin{itemize}
+    \item To understand the principles of robot forward kinematics based on the DH model.
+    \item To learn and implement a calibration data acquisition method based on known geometric features (cube vertices).
+    \item To apply an iterative least-squares method, in conjunction with a Jacobian matrix, to identify and optimize all 24 DH parameters.
+    \item To quantitatively analyze the improvement in the robot's positioning accuracy before and after calibration.
+\end{itemize}
+
+\section{Principles and Methodology}
+
+\subsection{DH Parameter Model and Forward Kinematics}
+
+
+\subsection{Experimental Setup and Data Acquisition}
+
+\subsection{Calibration Algorithm}
+
+
+
+\section{Results and Analysis}
+
+\subsection{Pre-Calibration Error Analysis}
+
+
+\subsection{DH Parameter Calibration Results}
+
+\subsection{Accuracy Improvement Analysis (\textbf{TODO 6, 7})}
+
+\section{Conclusion}
+This report successfully designed and implemented a comprehensive procedure for the kinematic calibration of a 6-DOF robotic arm's Denavit-Hartenberg parameters. By leveraging a structured data acquisition method based on known cube vertices, and subsequently augmenting this data to ensure algorithmic robustness, we established a solid foundation for parameter identification. The application of an iterative Levenberg-Marquardt optimization algorithm, driven by a numerically computed Jacobian, proved to be highly effective in identifying the discrepancies between the nominal and actual geometric parameters of the robot.
+
+The experimental results unequivocally demonstrate the success of the calibration. A new set of 24 DH parameters was identified, which provides a much more accurate kinematic model of the physical robot. This was quantitatively validated by a significant reduction in positioning error across the entire workspace. The overall model accuracy was improved by \textbf{[improvement]\%}, and the average positioning error for the key verification points was drastically reduced from \textbf{[old average error] mm} before calibration to just \textbf{[new average error] mm} after.
+
+In summary, this work confirms that kinematic calibration is a critical and indispensable step for enabling high-precision robotic applications. The demonstrated methodology provides a practical and powerful tool for mitigating errors originating from manufacturing and assembly, thereby unlocking the full potential and performance of the robotic manipulator. The enhanced accuracy achieved makes the robot significantly more reliable for tasks requiring high absolute precision, such as automated assembly, welding, or delicate material handling.
+
+
+
+
 
 \begin{thebibliography}{00}
 \bibitem{b1} G. Eason, B. Noble, and I. N. Sneddon, ``On certain integrals of Lipschitz-Hankel type involving products of Bessel functions,'' Phil. Trans. Roy. Soc. London, vol. A247, pp. 529--551, April 1955.
