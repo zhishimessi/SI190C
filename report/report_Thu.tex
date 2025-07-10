@@ -1,0 +1,190 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,graphicx}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{Robotic Hand-Eye Calibration Report}
+\author{Zihan Li}
+\date{2025.7.10}
+
+\begin{document}
+
+\maketitle
+
+\section{Abstract}
+This report presents the theory, implementation, and results of a robotic hand-eye calibration experiment. The calibration was performed using the Tsai-Lenz algorithm to determine the fixed transformation between a camera mounted on a robot's end-effector (eye-in-hand configuration) and the robot base. The mathematical foundations are derived in detail, followed by presentation of the experimental results and discussion.
+
+\section{Introduction}
+Hand-eye calibration is a fundamental problem in robotics that aims to determine the fixed transformation between a camera (eye) and a robot's end-effector (hand). This transformation is crucial for tasks that require visual feedback to guide robotic manipulation. The core equation governing this problem is:
+
+\begin{equation}
+A_i X = X B_i
+\end{equation}
+
+where:
+\begin{itemize}
+\item $A_i$ represents the transformation between robot base and end-effector for pose $i$
+\item $B_i$ represents the transformation between camera and calibration object for pose $i$
+\item $X$ is the unknown transformation between camera and end-effector (eye-in-hand) or camera and base (eye-to-hand)
+\end{itemize}
+
+\section{Mathematical Foundations}
+
+\subsection{Homogeneous Transformations}
+The transformations are represented as 4×4 homogeneous matrices:
+
+\begin{equation}
+H = \begin{bmatrix} R & t \\ 0 & 1 \end{bmatrix}
+\end{equation}
+
+where $R$ is a 3×3 rotation matrix and $t$ is a 3×1 translation vector.
+
+\subsection{Rotation Representations}
+Rotations can be represented in several forms:
+
+\begin{enumerate}
+\item \textbf{Axis-angle representation}: A rotation of angle $\theta$ about unit axis $k$
+\item \textbf{Rotation vector}: $r = \theta k$
+\item \textbf{Rodrigues' rotation formula}:
+
+\begin{equation}
+R = I + \sin\theta \cdot k_x + (1 - \cos\theta) \cdot k_x^2
+\end{equation}
+
+where $k_x$ is the skew-symmetric matrix of $k$.
+\end{enumerate}
+
+\subsection{Modified Rodrigues Parameters (MRP)}
+\begin{equation}
+P = 2 \sin\left(\frac{\theta}{2}\right) k
+\end{equation}
+
+\section{Tsai-Lenz Algorithm Derivation}
+The Tsai-Lenz algorithm solves the hand-eye calibration problem in two steps: first for rotation, then for translation.
+
+\subsection{Solving for Rotation}
+From $A_i X = X B_i$, we extract the rotation part:
+
+\begin{equation}
+R_{A_i} R_x = R_x R_{B_i}
+\end{equation}
+
+\begin{enumerate}
+\item Convert $R_{A_i}$ and $R_{B_i}$ to rotation vectors $r_{A_i}$ and $r_{B_i}$ using Rodrigues' formula:
+
+\begin{equation}
+\theta = \cos^{-1} \left( \frac{\text{trace}(R) - 1}{2} \right)
+\end{equation}
+
+\begin{equation}
+k = \frac{1}{2 \sin \theta} \begin{bmatrix} R_{32} - R_{23} \\ R_{13} - R_{31} \\ R_{21} - R_{12} \end{bmatrix}
+\end{equation}
+
+\item Compute MRP for each rotation:
+
+\begin{equation}
+P_A = 2 \sin\left(\frac{\theta_A}{2}\right) k_A
+\end{equation}
+\begin{equation}
+P_B = 2 \sin\left(\frac{\theta_B}{2}\right) k_B
+\end{equation}
+
+\item Solve for $P'_X$ using:
+
+\begin{equation}
+\text{skew}(P_A + P_B) \cdot P'_X = P_B - P_A
+\end{equation}
+
+where $\text{skew}(v)$ is the skew-symmetric matrix of vector $v$.
+
+\item Compute final MRP:
+
+\begin{equation}
+P_x = \frac{2P'_x}{\sqrt{1 + |P'_x|}}
+\end{equation}
+
+\item Convert back to rotation matrix $R_x$:
+
+\begin{equation}
+R_x = \left( 1 - \frac{|P_x|^2}{2} \right) I + \frac{1}{2} \left( P_x P^T_x + \sqrt{4 - |P_x|^2} \, \text{Skew}(P_x) \right)
+\end{equation}
+\end{enumerate}
+
+\subsection{Solving for Translation}
+With $R_x$ known, solve the translation part:
+
+\begin{equation}
+(I - R_{A_i}) t_x = t_{A_i} - R_x t_{B_i}
+\end{equation}
+
+This forms a linear system that can be solved using least squares when multiple measurements are available.
+
+\section{Experimental Results}
+The hand-eye calibration was performed using 19 valid image poses (out of 20 attempted). The camera intrinsics were provided as:
+
+\textbf{Camera matrix:}
+\begin{equation}
+K = \begin{bmatrix}
+594.0418 & 0 & 310.17813 \\
+0 & 593.92505 & 214.5701 \\
+0 & 0 & 1
+\end{bmatrix}
+\end{equation}
+
+\textbf{Distortion coefficients:}
+\begin{equation}
+[-0.4783, 0.3981, 0.000756, 0.0002098, -0.3071]
+\end{equation}
+
+The calibration results provided the transformation from camera to base:
+
+\textbf{Rotation matrix:}
+\begin{equation}
+R = \begin{bmatrix}
+-0.1768 & -0.6447 & -0.7437 \\
+-0.8130 & 0.5215 & -0.2588 \\
+0.5547 & 0.5589 & -0.6163
+\end{bmatrix}
+\end{equation}
+
+\textbf{Translation vector:}
+\begin{equation}
+t = [0.0917, 0.2581, 1.6916]^T
+\end{equation}
+
+This transformation can be represented as the homogeneous matrix:
+
+\begin{equation}
+X = \begin{bmatrix}
+-0.1768 & -0.6447 & -0.7437 & 0.0917 \\
+-0.8130 & 0.5215 & -0.2588 & 0.2581 \\
+0.5547 & 0.5589 & -0.6163 & 1.6916 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\end{equation}
+
+\section{Discussion and Conclusion}
+The experiment successfully implemented the Tsai-Lenz algorithm for hand-eye calibration. The results show a reasonable transformation between the camera and robot base, with the z-component of translation (1.69m) suggesting the camera was mounted at some distance from the base.
+
+Key observations:
+\begin{itemize}
+\item The algorithm successfully processed 19 out of 20 images, demonstrating robustness to occasional detection failures.
+\item The rotation matrix satisfies orthogonality conditions ($R^T R \approx I$) with minor numerical errors.
+\item The translation vector appears physically plausible for a robotic setup.
+\end{itemize}
+
+Potential improvements:
+\begin{itemize}
+\item Using more image poses could improve accuracy
+\end{itemize}
+
+This calibration provides the essential transformation needed for vision-guided robotic operations, enabling accurate mapping between camera coordinates and robot coordinates.
+
+\section*{References}
+\begin{enumerate}
+\item R. Y. Tsai and R. K. Lenz, "A new technique for fully autonomous and efficient 3D robotics hand/eye calibration," IEEE Transactions on Robotics and Automation, 1989.
+\item F. C. Park and B. J. Martin, "Robot sensor calibration: solving AX=XB on the Euclidean group," IEEE Transactions on Robotics and Automation, 1994.
+\item Lecture notes: S1190C Robotics Practice Course, 2025 Summer @ SIST
+\end{enumerate}
+
+\end{document}
