@@ -10,22 +10,26 @@
 \usepackage{float}
 \usepackage{booktabs}
 \usepackage{listings}
-\usepackage{xcolor}   
+\usepackage{xcolor}
+\usepackage{bm}
+\usepackage{amsthm}  
+\usepackage{tabularx}
+\newtheorem{definition}{Definition}  
+\usepackage{amsthm}  % 在导言区添加
+\newtheorem{proposition}{Proposition}  % 定义命题环境
+
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Robot Kinematic Calibration Report\\
-
-{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
-should not be used}
+\title{Robot kinematics Calibration Report\\
 
 }
 
-\author{\IEEEauthorblockN{ Given Name Surname}
-\IEEEauthorblockA{\textit{Shanghaitech} \\
-email address and student ID}
-
+\author{Haoyu dong\\
+	School of Information Science and Technology\\
+	ShanghaiTech University\\
+	\texttt{donghy2022@shanghaitech.edu.cn} \\
 }
 
 \maketitle
@@ -51,21 +55,205 @@ The objectives of this report are:
     \item To quantitatively analyze the improvement in the robot's positioning accuracy before and after calibration.
 \end{itemize}
 
-\section{Principles and Methodology}
+\section{Basic concepts and methods}
 
-\subsection{DH Parameter Model and Forward Kinematics}
+\subsection{Coordinate Transformation and Homogeneous Transformation Matrix}
 
+Coordinate transformation refers to the process of converting a point or object’s representation from one coordinate system to another. In 3D space, this transformation generally involves two key components: rotation and translation.
 
-\subsection{Experimental Setup and Data Acquisition}
+We often use matrices to represent linear transformations. The \textbf{rotation matrix} is a $3 \times 3$ orthogonal matrix $\bm{R}$, which satisfies the properties $\bm{R}^T \bm{R} = \bm{I}$ and $\det(\bm{R}) = 1$. It describes the orientation of one coordinate frame relative to another and is used to represent rotational motion in three dimensions.  
+
+However, translation is not a linear transformation in $\mathbb{R}^3$. So we need to introduce \textbf{translation vector}, typically denoted as $\mathbf{t} = [t_x, t_y, t_z]^T$. It represents the positional offset between the origins of two coordinate systems. It accounts for the translational movement between frames.
+
+In fact, we can use a $4 \times 4$ matrix to combine both transformations.
+
+\begin{definition}[Homogeneous Transformation Matrix]
+	The \textbf{homogeneous transformation matrix} is a $4 \times 4$ matrix that unifies 3D rotation and translation into a single representation. It is defined as:
+	
+	\begin{equation}
+		T = \begin{bmatrix}
+			\bm{R} & \mathbf{t} \\
+			\mathbf{0}^T & 1
+		\end{bmatrix}
+	\end{equation}
+	
+	where $\bm{R}$ is a $3 \times 3$ rotation matrix, and $\mathbf{t}$ is a $3 \times 1$ translation vector. The last row $\begin{bmatrix} \mathbf{0}^T & 1 \end{bmatrix}$ augments the matrix to a $4 \times 4$ form, enabling both linear and affine transformations via matrix multiplication.
+\end{definition}
+
+This matrix is widely used in fields such as robotics, computer vision, and computer graphics to represent rigid body transformations (i.e., pose changes) between coordinate systems in a concise and consistent manner.
+
+\subsection{D-H Parameters and Forward Kinematics}
+
+\subsubsection{Denavit-Hartenberg (D-H) Method Basics}
+To model the positional relationships of a robotic arm in space, in addition to establishing coordinate systems, we still need to define a series of parameters to describe the spatial properties of the robotic arm itself.
+
+The \textbf{Denavit-Hartenberg (D-H) method} provides a systematic way to model the geometry of robotic manipulators. Its primary purpose is to establish a standard procedure for assigning coordinate frames to robot links and joints, which enables the derivation of the end-effector pose through matrix transformations.
+
+To facilitate this modeling, four parameters are defined for each joint, collectively known as the D-H parameters. These parameters describe the relative positions and orientations between adjacent coordinate frames and are summarized in Table.
+
+% \begin{table*}[htbp] 
+% \centering
+% \caption{Denavit-Hartenberg Parameters}
+% \label{tab:dh-params}
+% \begin{tabularx}{\linewidth}{@{} ll X @{}} % \linewidth 自动适应单栏宽度
+% \toprule
+% \textbf{Parameter} & \textbf{Meaning} & \textbf{Description} \\
+% \midrule
+% $a_i$       & Link length  & Distance along $x_i$ from $z_i$ to $z_{i+1}$ \\
+% $\alpha_i$  & Link twist   & Angle about $x_i$ from $z_i$ to $z_{i+1}$ \\
+% $d_i$       & Joint offset & Distance along $z_i$ from $x_{i-1}$ to $x_i$ \\
+% $\theta_i$  & Joint angle  & Angle about $z_i$ from $x_{i-1}$ to $x_i$ \\
+% \bottomrule
+% \end{tabularx}
+% \vspace{-3pt}
+% \footnotesize{Note: $x_i$ is the common normal between $z_i$ and $z_{i+1}$}
+% \end{table*}
+
+\subsubsection{D-H Coordinate System Construction Rules}
+To apply the D-H method, coordinate systems are constructed following a set of specific rules below. 
+
+\begin{itemize}
+	\item Axis $i$ (joint $i$) defines the $z$-axis $(z_i)$.
+	\item The common normal of link $i$ defines the $x$-axis $(x_i)$, pointing from $z_i$ to $z_{i+1}$.
+	\item The $y$-axis is determined by the right-hand rule ($y_i=z_i\times x_i$).
+\end{itemize}
+
+These rules ensure consistency in frame assignments, which is essential for constructing transformation matrices.
+
+\subsubsection{D-H Transformation Matrix}
+
+With coordinate frames established, each link’s transformation relative to the previous frame is represented by a matrix.
+
+\begin{definition}[D-H Transformation Matrix]
+	The \textbf{D-H transformation matrix} incorporates the four D-H parameters and is defined as follows:
+	
+	\[
+	A_i=
+	\begin{bmatrix}
+		\cos\theta_i & -\sin\theta_i \cos\alpha_i & \sin\theta_i \sin\alpha_i & a_i \cos\theta_i \\
+		\sin\theta_i & \cos\theta_i \cos\alpha_i & -\cos\theta_i \sin\alpha_i & a_i \sin\theta_i \\
+		0 & \sin\alpha_i & \cos\alpha_i & d_i \\
+		0 & 0 & 0 & 1
+	\end{bmatrix}
+	\]
+	
+	This homogeneous transformation matrix encodes both the rotation and translation between adjacent frames.
+\end{definition}
+
+\subsubsection{Forward Kinematics}
+By chaining these matrices together, we can compute the full \textbf{forward kinematics} of the manipulator, a process that maps joint angles to pose. Specifically, the end-effector pose relative to the base frame is obtained by multiplying the individual transformations from the base to the final joint:
+
+\[
+T = A_1 \cdot A_2 \cdot \cdots \cdot A_n
+\]
+
+Here, \( T \) is a \( 4 \times 4 \) homogeneous transformation matrix that describes the position and orientation of the end-effector in the base coordinate frame. This process forms the foundation for kinematic analysis, enabling tasks such as trajectory planning, workspace analysis, and motion control.
+
+\subsection{Jacobian Matrix: Linear Approximation of Pose Transformation}
+
+Fortunately, the Jacobian matrix can still serve as a first-order approximation of the nonlinear mapping to address related problems in this field.
+
+\begin{definition}[Jacobian Matrix]
+	The \textbf{Jacobian matrix} $J(q) \in \mathbb{R}^{m \times n}$ is a fundamental construct in robotics that linearly maps joint velocities to end-effector velocities for a manipulator at a given joint configuration $q$. Formally, it is defined by the relation:
+	\[
+	\dot{\bm{T}} = J(q) \cdot \dot{q}
+	\]
+	where \(\dot{\bm{T}} \in \mathbb{R}^{m}\) denotes the end-effector velocity vector \emph{---} typically comprising both linear and angular velocity components in task space \emph{---} and \(\dot{q} \in \mathbb{R}^{n}\) represents the joint velocity vector in configuration space. 
+\end{definition}
+
+\begin{proposition}
+	From the definition, we can quickly have:
+	\[
+		\bm{T}(q + \Delta q) = \bm{T}(q) + J(q) \Delta q
+	\]
+	by first-order Taylor approximation, if $\Delta q << q$. 
+\end{proposition}
+
+To construct the Jacobian, we make use of concepts from screw theory, which models rigid-body motion as a combination of rotational and translational components. Each joint contributes a spatial velocity \emph{---} referred to as a \textbf{twist} \emph{---} that collectively determines the end-effector’s instantaneous motion. The Jacobian matrix can thus be built column by column, where each column corresponds to the twist associated with a single joint:
+\[
+J(:, j) = 
+\begin{bmatrix}
+	d_j \\
+	\delta_j
+\end{bmatrix}
+\]
+Here, \(d_j\) represents the linear velocity contribution, and \(\delta_j\) the angular velocity contribution from the \(j\)-th joint. These components depend on the joint type:
+
+\begin{itemize}
+	\item \textbf{Revolute Joint:} For a joint rotating about axis \(\omega_j\), located at point \(p_j\), the contributions are:
+	\[
+	d_j = \omega_j \times (p_e - p_j), \quad \delta_j = \omega_j
+	\]
+	This reflects that the angular motion induces a linear velocity orthogonal to the rotation axis and position vector.
+	
+	\item \textbf{Prismatic Joint:} For a joint translating along direction \(\hat{d}_j\), the twist simplifies to:
+	\[
+	d_j = \hat{d}_j, \quad \delta_j = 0
+	\]
+	Here, the joint directly contributes to linear motion, with no associated angular velocity.
+\end{itemize}
+
+In summary, the Jacobian matrix compactly encodes how joint velocities influence the instantaneous motion of the end-effector. Its structure varies with manipulator geometry and joint types, and it serves as a foundation for motion control, singularity analysis, and dynamic modeling.
+
+\subsection{Two Basic Calibration Methods}The two primary methods for robot position calibration are as follows:Statistical Approach
+This method aims to establish a relationship between the sensed position measurements and the actual locations. It focuses on creating a calibration matrix C for each desired position of the robot, where the relationship is expressed as\([Actual] = [C][sensed]\).
+By collecting a large number of data samples of actual positions and corresponding sensed values, a least-squares fit is applied to approximate the matrix C using the pseudo-inverse, thereby correcting the deviation between sensed and actual positions. Model-Based Approach
+Instead of directly finding the calibration matrix C, this method utilizes a known kinematic model of the robot and its derivatives to correct the theoretical model.
+
+\section{Problem Formulation and Calibration Algorithm}
+\subsection{End Effector Pose Representation}
+The end-effector pose in the base frame \(^0T_{ee}\) is obtained by cascading transformations along the kinematic chain
+:\begin{equation}^0T_{ee}(q, x) = {}^0T_1(q_1, x_1) \cdot {}^1T_2(q_2, x_2) \cdot \dots \cdot {}^{n-1}T_{ee}(q_n, x_n)\end{equation}
+where \(x = [x_1^T, x_2^T, \dots, x_n^T]^T \in \mathbb{R}^{4n}\) is the vector of all DH parameters, and \(q = [q_1, q_2, \dots, q_n]^T\) 
+is the joint angle vector. The end-effector pose is represented as a 7-dimensional vector combining position and orientation (quaternion)
+:\begin{equation}P(q, x) = \begin{bmatrix} {}^0r_{ee} \ {}^0Q_{ee} \end{bmatrix} \in \mathbb{R}^7\end{equation}with \(^0r_{ee} \in \mathbb{R}^3\) 
+as the position vector and \(^0Q_{ee} \in \mathbb{R}^4\) as the orientation quaternion.
+
+\subsection{Error Model and Linearization}
+Let \(\tilde{P} \in \mathbb{R}^{7M}\) denote the stacked vector of measured end-effector poses (over M configurations), and \(P(q, x) \in \mathbb{R}^{7M}\) denote the stacked vector of poses computed by the kinematic model. The error vector is defined as:
+\begin{equation}
+e = \tilde{P} - P(q, x)
+\end{equation}
+The goal of kinematic calibration is to find optimal DH parameters x that minimize the squared error:
+\begin{equation}
+\min_x \frac{1}{2} | e |^2
+\end{equation}Due to the nonlinearity of \(P(q, x)\) in terms of x, the problem is linearized using the first-order Taylor expansion around the current parameter estimate \(x_k\):
+\begin{equation}
+P(q, x_k + \Delta x) \approx P(q, x_k) + D_k \Delta x
+\end{equation}
+where \(\Delta x\) is the parameter correction, and \(D_k \in \mathbb{R}^{7M \times 4n}\) is the Jacobian matrix of P with respect to x evaluated at \(x_k\). Substituting into the error definition, the linearized error becomes:
+\begin{equation}
+e \approx \tilde{P} - P(q, x_k) - D_k \Delta x = e_k - D_k \Delta x
+\end{equation}
+where \(e_k = \tilde{P} - P(q, x_k)\) is the error at iteration k .
 
 \subsection{Calibration Algorithm}
+\subsubsection{Jacobian Matrix Assembly}
+The Jacobian D is assembled by combining the position Jacobian \(D_p\) and orientation Jacobian \(D_{or}\):
+\begin{equation}
+D = \begin{bmatrix} D_p \ D_{or} \end{bmatrix}
+\end{equation}Position Jacobian \(D_p\):Derived from the partial derivatives of the end-effector position \(^0r_{ee}\) with respect to DH parameters. Using iterative chain rules, the derivative of \(^0r_{ee}\) with respect to \(x_i\) is computed as:
+\begin{equation}
+\frac{\partial {}^0r_{ee}}{\partial x_i} = {}^0R_1 \cdot \dots \cdot {}^{i-1}R_i \cdot \frac{\partial {}^{i-1}r_i}{\partial x_i}
+\end{equation}
+where \(^{i-1}R_i\) is the rotation submatrix of \(^{i-1}T_i\), and \(\frac{\partial {}^{i-1}r_i}{\partial x_i}\) is derived from the DH transformation. Orientation Jacobian \(D_{or}\):Derived from the partial derivatives of the orientation quaternion \(^0Q_{ee}\) with respect to DH parameters. The end-effector quaternion is the product of link quaternions \(^0Q_{ee} = {}^0Q_1 \ast {}^1Q_2 \ast \dots \ast {}^{n-1}Q_{ee}\) (where \(\ast\) denotes quaternion multiplication). Its derivative with respect to \(x_i\) is computed using quaternion product rules:
+\begin{equation}
+\frac{\partial {}^0Q_{ee}}{\partial x_i} = \sum_{k=1}^i \left( {}^0Q_1 \ast \dots \ast \frac{\partial {}^{k-1}Q_k}{\partial x_i} \ast \dots \ast {}^{n-1}Q_{ee} \right)
+\end{equation}.
 
-
+\subsubsection{Parameter Optimization}
+We use the Pseudoinversion (Pinv) Solver to find \(\Delta x\) that minimizes the linearized error:
+\begin{equation}
+\Delta x = \arg\min_{\Delta x} \frac{1}{2} | e_k - D_k \Delta x |^2 + \lambda | \Delta x |^2
+\end{equation}
+where \(\lambda\) is the regularization parameter. The solution is:
+\begin{equation}
+\Delta x = (D_k^T D_k + \lambda I)^{-1} D_k^T e_k
+\end{equation}
 
 \section{Results and Analysis}
 
 \subsection{Pre-Calibration Error Analysis}
-
 
 \subsection{DH Parameter Calibration Results}
 
