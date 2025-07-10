@@ -254,7 +254,36 @@ where \(\lambda\) is the regularization parameter. The solution is:
 \section{Results and Analysis}
 
 \subsection{Pre-Calibration Error Analysis}
+\indent Here is the detailed explanation of pre-calibration error translated into English paragraphs, with technical terms and equations preserved in LaTeX format:\\
+\indent Pre-calibration error refers to the "systematic pose inaccuracies" inherent in a robotic system before parameter calibration. This error primarily stems from deviations between the robot's theoretical kinematic model and its actual physical structure due to manufacturing/assembly imperfections.\\
 
+The core error sources are categorized as:\\ 
+\indent Geometric errors (constituting more than 90 percents of inaccuracies) including link-length variations, joint axis misalignments, and base location offsets. These are systematic and constant, making them compensable through calibration. Non-geometric errors (e.g., gear eccentricity, backlash, joint compliance) exhibit random or periodic behavior and are harder to model.  
+
+Quantitatively, pre-calibration error typically measures 0.5 percents of the robot's dimensions (e.g., ~5 mm for a 1 m reach robot). This contrasts with repeatability (scatter radius), which is often far smaller (e.g., 0.03 mm for the Adopt Six 300 robot). For instance, a PUMA 560 exhibits 10 mm pre-calibration error, reducible to 0.2–0.3 mm post-calibration—a 50-fold improvement.  
+
+Fundamentally, these errors arise from deliberate manufacturing tolerances. Strict tolerances increase costs, so robots are built with permissible deviations. This creates a mismatch between ideal Denavit-Hartenberg (DH) parameters ($\alpha, a, d, \theta$) and physical reality. The resulting pose error is captured by:  
+
+\begin{equation}
+    \Delta \mathbf{r} = \mathbf{r}_{\text{actual}} - \mathbf{r}_{\text{nominal}} = \mathbf{\Phi} \Delta \mathbf{\varphi}
+\end{equation}
+
+where $\Delta \mathbf{\varphi}$ is the DH parameter deviation vector and $\mathbf{\Phi}$ is the error propagation Jacobian.  
+
+
+Mathematically, the linearized error model is:  
+\begin{equation}
+    \Delta \mathbf{P} = \mathbf{J} \cdot \Delta \mathbf{DH} + \mathbf{\epsilon}
+\end{equation}
+
+Here, $\Delta \mathbf{P}$ is the end-effector position error, $\mathbf{J}$ is the $3 \times 4n$ Jacobian of DH parameters, $\Delta \mathbf{DH}$ is the $4n \times 1$ parameter correction vector, and $\mathbf{\epsilon}$ combines linearization residuals and measurement noise. Calibration solves this via least-squares optimization:  
+
+\begin{equation}
+    \Delta \mathbf{DH} = (\mathbf{J}^T \mathbf{J})^{-1} \mathbf{J}^T \Delta \mathbf{P}
+\end{equation}
+requiring $\mathbf{J}^T\mathbf{J}$ to be well-conditioned.  
+
+In essence, pre-calibration error is a correctable systemic deviation dominated by geometric factors. Calibration bridges the gap between repeatability (precision) and absolute accuracy, transforming the robot from "repeatable but inaccurate" to both precise and accurate. Tools like Kalibrot automate this parameter identification using external measurement systems (e.g., laser trackers) and optimization.
 \subsection{DH Parameter Calibration Results}
 
 \subsection{Accuracy Improvement Analysis (\textbf{TODO 6, 7})}
