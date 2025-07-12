@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.1.2)  10 JUL 2025 04:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.1.2)  12 JUL 2025 13:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/donghy/SI190C/report/report.tex
-(/home/donghy/SI190C/report/report.tex
+**/home/donghy/SI190C/report/report1.tex
+(/home/donghy/SI190C/report/report1.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
 (/usr/share/texlive/texmf-dist/tex/latex/ieeetran/IEEEtran.cls
@@ -277,60 +277,265 @@ File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
 File: listings.cfg 2023/02/27 1.9 listings configuration
 ))
 Package: listings 2023/02/27 1.9 (Carsten Heinz)
+ (/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty
+Package: bm 2023/07/08 v1.2f Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup6
+\symboldletters=\mathgroup7
+\symboldsymbols=\mathgroup8
+Package bm Info: No bold for \OMX/cmex/m/n, using \pmb.
+Package bm Info: No bold for \U/msa/m/n, using \pmb.
+Package bm Info: No bold for \U/msb/m/n, using \pmb.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
+) (/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks27
+\thm@bodyfont=\toks28
+\thm@headfont=\toks29
+\thm@notefont=\toks30
+\thm@headpunct=\toks31
+\thm@preskip=\skip56
+\thm@postskip=\skip57
+\thm@headsep=\skip58
+\dth@everypar=\toks32
+) (/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2023/07/08 v2.11c `tabularx' package (DPC)
+ (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
+\col@sep=\dimen192
+\ar@mcellbox=\box59
+\extrarowheight=\dimen193
+\NC@list=\toks33
+\extratabsurround=\skip59
+\backup@length=\skip60
+\ar@cellbox=\box60
+)
+\TX@col@width=\dimen194
+\TX@old@table=\dimen195
+\TX@old@col=\dimen196
+\TX@target=\dimen197
+\TX@delta=\dimen198
+\TX@cols=\count297
+\TX@ftn=\toks34
+)
+\c@definition=\count298
+\c@proposition=\count299
  (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count297
-\l__pdf_internal_box=\box59
-) (./report.aux)
-\openout1 = `report.aux'.
+\l__color_backend_stack_int=\count300
+\l__pdf_internal_box=\box61
+) (./report1.aux)
+\openout1 = `report1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
 
 -- Lines per column: 56 (exact).
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count298
-\scratchdimen=\dimen192
-\scratchbox=\box60
-\nofMPsegments=\count299
-\nofMParguments=\count300
-\everyMPshowfont=\toks27
-\MPscratchCnt=\count301
-\MPscratchDim=\dimen193
-\MPnumerator=\count302
-\makeMPintoPDFobject=\count303
-\everyMPtoPDFconversion=\toks28
+\scratchcounter=\count301
+\scratchdimen=\dimen199
+\scratchbox=\box62
+\nofMPsegments=\count302
+\nofMParguments=\count303
+\everyMPshowfont=\toks35
+\MPscratchCnt=\count304
+\MPscratchDim=\dimen256
+\MPnumerator=\count305
+\makeMPintoPDFobject=\count306
+\everyMPtoPDFconversion=\toks36
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-\c@lstlisting=\count304
-LaTeX Font Info:    Trying to load font information for U+msa on input line 31.
+\c@lstlisting=\count307
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 39.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 56.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 31.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 56.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
-]
+] [2]
+Underfull \hbox (badness 2781) in paragraph at lines 242--244
+\OT1/ptm/m/n/10 de-rived from the DH trans-for-ma-tion. Ori-en-ta-tion Ja-co-
+ []
+
+
+Underfull \hbox (badness 5563) in paragraph at lines 261--263
+[]\OT1/ptm/m/n/10 Pre-calibration er-ror refers to the "sys-tem-atic pose
+ []
+
+
+Underfull \hbox (badness 3078) in paragraph at lines 261--263
+\OT1/ptm/m/n/10 cal-i-bra-tion. This er-ror pri-mar-ily stems from de-vi-a-tions
+ []
+
+
+Underfull \hbox (badness 2486) in paragraph at lines 261--263
+\OT1/ptm/m/n/10 ac-tual phys-i-cal struc-ture due to man-u-fac-tur-ing/assem-bly
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 261--263
+
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 293--319
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 293--319
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 293--319
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 293--319
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 293--319
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 293--319
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 293--319
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 293--319
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 320--330
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 320--330
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 331--342
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 331--342
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 344--358
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 344--358
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 344--358
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 344--358
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 359--373
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 359--373
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 359--373
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 374--379
+
+ []
+
+[4]
+Underfull \hbox (badness 3977) in paragraph at lines 380--392
+[]\OT1/ptm/m/n/10 Verification Re-sults with the use of cal-i-brated DH
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 380--392
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 380--392
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 393--404
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 393--404
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 405--416
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 405--416
+
+ []
+
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -342,27 +547,25 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[2
-
-] (./report.aux)
+[5] (./report1.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 5669 strings out of 474222
- 86637 string characters out of 5748734
- 1938975 words of memory out of 5000000
- 27870 multiletter control sequences out of 15000+600000
- 596023 words of font info for 108 fonts, out of 8000000 for 9000
+ 6020 strings out of 474222
+ 91812 string characters out of 5748734
+ 1944975 words of memory out of 5000000
+ 28201 multiletter control sequences out of 15000+600000
+ 595688 words of font info for 106 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,8n,65p,936b,294s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (2 pages, 71481 bytes).
+ 57i,8n,65p,937b,358s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on report1.pdf (5 pages, 221112 bytes).
 PDF statistics:
- 37 PDF objects out of 1000 (max. 8388607)
- 22 compressed objects within 1 object stream
+ 111 PDF objects out of 1000 (max. 8388607)
+ 67 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
