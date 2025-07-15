@@ -1,0 +1,67 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage[utf8]{inputenc}
+
+\title{Robot Simulation Practice Report}
+\author{Zihan Li}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+This report documents the implementation of robot simulation techniques using MATLAB and Gazebo with ROS2. The project demonstrates essential tools for virtual robot development, covering both kinematic analysis and physics-based simulation.
+
+\section{Principles}
+
+Robot simulation relies on two fundamental approaches with distinct mathematical frameworks. For kinematic analysis in MATLAB, we utilize transformation matrices to model robot motion. The end-effector position for an $n$-joint manipulator is computed through the homogeneous transformation:
+
+\begin{equation}
+T_n^0 = \prod_{i=1}^n A_i(\theta_i)
+\end{equation}
+
+where $A_i$ represents each joint's transformation. Trajectory generation employs parametric path planning, such as circular motions defined by:
+
+\begin{equation}
+\mathbf{p}(t) = \mathbf{c} + r(\mathbf{u}\cos\omega t + \mathbf{v}\sin\omega t)
+\end{equation}
+
+with $\mathbf{c}$ as the center, $r$ the radius, and $\mathbf{u},\mathbf{v}$ orthogonal basis vectors. The inverse kinematics solution uses the Jacobian pseudo-inverse:
+
+\begin{equation}
+\Delta\mathbf{q} = J^\dagger(\mathbf{q})\Delta\mathbf{x}
+\end{equation}
+
+For dynamic simulation in Gazebo, the physics engine solves Newton-Euler equations:
+
+\begin{equation}
+\tau = M(\mathbf{q})\ddot{\mathbf{q}} + C(\mathbf{q},\dot{\mathbf{q}}) + G(\mathbf{q})
+\end{equation}
+
+The ROS2 control framework manages communication between simulation and controllers through:
+
+\begin{equation}
+\texttt{ros2\_control} \leftrightarrow \texttt{Gazebo} \leftrightarrow \texttt{URDF Model}
+\end{equation}
+
+
+\section{Results}
+
+The MATLAB implementation successfully created a SCARA robot model using the DH parameters provided in the project files. The forward kinematics computation accurately positioned the end-effector, while the inverse kinematics solution using pseudo-inverse methods enabled smooth trajectory following. The circular path with 20mm radius was perfectly tracked as shown in the results.
+
+In Gazebo, the URDF model imported correctly and responded to ROS2 control commands. The sinusoidal joint trajectory demonstration confirmed proper integration between the physics simulation and ROS2 control stack. The joint positions followed the commanded $a_i \sin(b_i t + \phi_i)$ profiles as expected, validating the simulation environment setup.
+
+[FIG]
+
+\section{Conclusion}
+
+This project successfully demonstrated both kinematic simulation in MATLAB and dynamic simulation in Gazebo. The mathematical formulations provided a solid foundation for understanding robot motion generation and control. The MATLAB implementation highlighted algorithmic aspects of robot kinematics, while Gazebo emphasized the importance of physics-based simulation for realistic behavior prediction.
+
+Future enhancements could explore more sophisticated trajectory generation techniques, contact dynamics simulation, and sim-to-real transfer methods. The combination of these two simulation approaches provides comprehensive tools for robotic system development, from initial algorithm testing to final validation before physical implementation.
+
+\end{document}
